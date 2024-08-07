@@ -41,28 +41,5 @@ public class PayServeic {
         }
         return false;
     }
-     //***************Extra endpoint payment methods************************
-        public int methodPaying(int productId,int userId,String paymentMethod) {
-        for (int i = 0; i < productService.products.size(); i++){
-            if (productService.products.get(i).getId() == productId) {
-                for (int j = 0; j < userService.users.size(); j++) {
-                    if (userService.users.get(j).getRole().equalsIgnoreCase("Customer") && userService.users.get(j).getId() == userId) {
-                        if (paymentMethod.equalsIgnoreCase("debit_card")&& userService.users.get(j).getBalance() >= productService.products.get(i).getPrice()) {
-                                userService.users.get(j).setBalance(userService.users.get(j).getBalance() - productService.products.get(i).getPrice());
 
-                        }else if (paymentMethod.equalsIgnoreCase("Tabby")) {
-                                int t = productService.products.get(i).getPrice() / 4;
-                                userService.users.get(j).setBalance(userService.users.get(j).getBalance() - t);
-                        }else if (paymentMethod.equalsIgnoreCase("Receiving")) {
-                            userService.users.get(j).getBalance();
-                           }
-                    }else {return 1;}
-
-                }
-
-            } else {return 2;}
-
-        }
-        return 3;
-    }
 }
