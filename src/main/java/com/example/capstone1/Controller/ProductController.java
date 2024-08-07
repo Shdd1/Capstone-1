@@ -51,9 +51,9 @@ public class ProductController {
         }
         return ResponseEntity.status(400).body(new ApiResponse("Not found"));
     }
-    //********** Display Trending Products *********************
-    @GetMapping("/gett")
-    public ResponseEntity getTrendingProducts(){
-        return ResponseEntity.status(200).body(productService.getTrendingProducts());
+    @GetMapping("/get/{main}/{max}")
+    public ResponseEntity getsales(@PathVariable int main, @PathVariable int max){
+        return ResponseEntity.status(200).body(productService.rangeSales(main,max));
     }
+
 }
