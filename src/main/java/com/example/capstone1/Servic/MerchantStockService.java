@@ -125,5 +125,26 @@ public class MerchantStockService {
         }  return false;
     }
 
+     //*****************************product Status******************************8
+  public boolean productStatus(int productId ,int merchantId){
+      for (int i = 0; i < merchantStocks.size(); i++) {
+          if(merchantStocks.get(i).getProduct_id()==productId&&merchantStocks.get(i).getMerchant_id()==merchantId){
+              for(int j=0;j<productService.products.size();j++){
+
+                  if (merchantStocks.get(i).getStock()<=0){
+                      productService.products.get(j).setProductStatus("Unavailable");
+                      return true;
+                  }
+                  if (merchantStocks.get(i).getStock()>0){
+                  productService.products.get(j).setProductStatus("Available");
+                  return true;
+                 }
+              }
+          }
+      }
+      return false;
+  }
+
+
 
 }
