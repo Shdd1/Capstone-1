@@ -16,20 +16,18 @@ public class Product {
 
     @NotNull(message = "price can not be null")
     @Positive(message = "price must be positive number")
-    private int price;
+    private double price;
 
     @NotNull(message = "category ID can not be null")
     private int categoryID;
 
-    @NotNull(message = "Product rating must not be null")
-    @Min(value = 0, message = "Product rating must be at least 0")
-    @Max(value = 5, message = "Product rating must be at most 5")
-    private Double rating;
+
     @NotNull(message = "Product sales must not be null")
     @Min(value = 0, message = "Product sales must be a positive number or zero")
-    private Integer sales;
-    @NotNull(message = "Product views must not be null")
-    @Min(value = 0, message = "Product views must be a positive number or zero")
-    private Integer views;
+    private Integer sales= 0;
+
+    @NotEmpty(message = "Product Status can not be empty")
+    @Pattern(regexp = "^(New|Available|Unavailable)$")
+    private String productStatus;
 
 }
