@@ -52,4 +52,13 @@ public class UserController {
         }
         return ResponseEntity.status(400).body(new ApiResponse("Not found"));
     }
+
+    @GetMapping("/prime/{userId}")
+    public ResponseEntity primeUser(@PathVariable int userId){
+        boolean isPrime=userService.registerUserToPrime(userId);
+        if(isPrime){
+            return ResponseEntity.status(200).body(new ApiResponse("User successfully registered to Prime."));
+        }
+        return ResponseEntity.status(400).body(new ApiResponse("user not found"));
+    }
 }
