@@ -8,14 +8,8 @@ import java.util.ArrayList;
 
 @Service
 public class MerchantService {
-   private final ProductService productService;
-   private final MerchantStockService merchantStockService;
-   ArrayList<Merchant>merchants=new ArrayList<>();
 
-   public MerchantService(ProductService productService, MerchantStockService merchantStockService) {
-      this.productService = productService;
-      this.merchantStockService = merchantStockService;
-   }
+   ArrayList<Merchant>merchants=new ArrayList<>();
 
    public ArrayList<Merchant> getMerchants(){
       return merchants;
