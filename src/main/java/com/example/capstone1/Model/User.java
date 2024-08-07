@@ -31,5 +31,11 @@ public class User {
 
     @NotNull(message = "Balance must not be null")
     @Positive(message = "Balance must be positive")
-    private int balance;
+    private double balance;
+
+    @NotNull(message = "can not be null")
+    private Boolean isPrime;
+
+
+
 }
