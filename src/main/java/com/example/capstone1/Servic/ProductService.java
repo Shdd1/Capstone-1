@@ -37,21 +37,16 @@ public class ProductService {
         }
         return false;
     }
-    //********** Display Trending Products *********************
-    public List<Product> getTrendingProducts(){
-        return products.stream().sorted((p1, p2) -> {
-            int salesComparison = p2.getSales().compareTo(p1.getSales());
-            if (salesComparison != 0) {
-                return salesComparison;
+//**************** range sales ***********************
+    public ArrayList<Product> rangeSales(int main,int max){
+        ArrayList<Product>products1=new ArrayList<>();
+        for(int i=0;i<products.size();i++){
+            if(products.get(i).getSales()>=main && products.get(i).getSales()<=max){
+                products1.add(products.get(i));
             }
-            int ratingComparison = p2.getRating().compareTo(p1.getRating());
-            if (ratingComparison != 0) {
-                return ratingComparison;
-            }
-            return p2.getViews().compareTo(p1.getViews());
-        })
-        .limit(10)
-            .collect(Collectors.toList());
+        }
+        return products1;
     }
+
 
 }
