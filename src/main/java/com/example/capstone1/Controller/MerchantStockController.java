@@ -75,6 +75,15 @@ public class MerchantStockController {
         };
 
     }
+    //**************** Discount *************************************************
+    @PutMapping("/discount/{productId}/{merchantId}/{userId}")
+    public ResponseEntity discount(@PathVariable int productId,@PathVariable int merchantId,@PathVariable int userId){
+        boolean discount=merchantStockService.discount(productId,merchantId,userId);
+        if(discount){
+            return ResponseEntity.status(200).body(new ApiResponse("Successful discount"));
+        }
+        return ResponseEntity.status(400).body(new ApiResponse("Not found"));
+    }
 
 
 }
