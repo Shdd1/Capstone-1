@@ -85,5 +85,17 @@ public class MerchantStockController {
         return ResponseEntity.status(400).body(new ApiResponse("Not found"));
     }
 
+     //**************product Status******************************
+    @PutMapping("/status/{productId}/{merchantId}")
+    public ResponseEntity productStatus(@PathVariable int productId,@PathVariable int merchantId ){
+        boolean status= merchantStockService.productStatus(productId,merchantId);
+        if(status){
+            return ResponseEntity.status(200).body(new ApiResponse("change status of product"));
+
+        }
+        return ResponseEntity.status(400).body(new ApiResponse("Order Not Found"));
+
+    }
+
 
 }
