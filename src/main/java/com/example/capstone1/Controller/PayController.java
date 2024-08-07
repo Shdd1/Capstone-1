@@ -53,19 +53,5 @@ public class PayController {
         }
         return ResponseEntity.status(400).body(new ApiResponse("Not found"));
     }
-    //***************Extra endpoint payment methods************************
-    @PutMapping("/update/{productId}/{userId}/{paymentMethod}")
-    public ResponseEntity PaymentMethod(@PathVariable int productId,@PathVariable int userId ,@PathVariable String paymentMethod){
-        int isPay=payServeic.methodPaying(productId,userId,paymentMethod);
-        return switch (isPay){
-            case 1->
-                    ResponseEntity.status(400).body(new ApiResponse("User role not customer or user id not found"));
-            case 2->
-                    ResponseEntity.status(400).body(new ApiResponse("Product not found"));
-
-            default -> ResponseEntity.status(200).body(new ApiResponse("Success paying"));
-        };
-
-
-    }
+  
 }
