@@ -17,6 +17,7 @@ public class ProductService {
 
     public void addProduct(Product product){
             products.add(product);
+           product.setProductStatus("New");
     }
     public boolean updateProduct(int id,Product product){
         for(int i=0;i<products.size();i++){
